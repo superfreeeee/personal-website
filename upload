@@ -1,0 +1,6 @@
+#!/bin/bash
+
+scp -r dist/ root@remote:/home/website/
+scp docker-compose.yml root@remote:/home/website/
+scp nginx.conf root@remote:/home/website/
+scp restart root@remote:/home/website/
