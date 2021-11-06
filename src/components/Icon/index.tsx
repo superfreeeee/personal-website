@@ -33,6 +33,7 @@ export enum IconType {
   Github = 'bxl-github',
   LinkExternal = 'bx-link-external',
   Trash = 'bx-trash',
+  Instagram = 'bxl-instagram',
 }
 
 interface IconProps {

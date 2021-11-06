@@ -6,14 +6,13 @@ import routes from '../../routes';
 import { Container, Menu, MenuItem, StyledLink, Wrapper } from './styles';
 
 const Header = () => {
-  const location = useLocation();
-  const currentPath = location.pathname;
+  const currentPath = useLocation().pathname;
 
   return (
     <Container>
       <Wrapper>
         <Menu>
-          {routes.map(({ path, icon, label }, index) => {
+          {routes.map(({ path, label }) => {
             return (
               <MenuItem key={path} className={classNames({ selected: currentPath === path })}>
                 <StyledLink to={path}>{label}</StyledLink>
