@@ -1,8 +1,6 @@
 import styles from './index.module.scss';
 
-import React, { ChangeEvent, ChangeEventHandler, FC, Fragment, useCallback, useState } from 'react';
-import classNames from 'classnames';
-import { useMount } from '@youxian/utils';
+import React, { ChangeEvent, ChangeEventHandler, FC, Fragment, useState } from 'react';
 
 enum TargetType {
   BINARY,

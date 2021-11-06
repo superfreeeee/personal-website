@@ -1,5 +1,4 @@
 export enum LocalStorageKey {
-  SidebarMinimize = '__youxian_website_sidebar_minimize',
   GPACalculatorSubject = '__youxian_website_gpa_calculator_subjects',
 }
 

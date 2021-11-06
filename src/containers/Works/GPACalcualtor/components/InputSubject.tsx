@@ -3,10 +3,8 @@ import styled from 'styled-components';
 
 import useInput from '@hooks/useInput';
 import { Subject } from '../interface';
-import { BG_COLOR } from '@layouts/Sidebar/style';
 
-const Wrapper = styled.div`
-`;
+const Wrapper = styled.div``;
 
 const InputWrapper = styled.div`
   display: flex;
@@ -27,7 +25,8 @@ const InputBlock = styled.div`
 const Input = styled.input`
   width: 80px;
   padding: 4px 14px;
-  border-radius: 12px;
+  border: 2px solid rgba(0, 0, 0, 16);
+  border-radius: 8px;
   outline: none;
   font-size: 15px;
 
@@ -49,7 +48,7 @@ const AddButton = styled.button`
   padding: 4px 16px;
   margin: 0 auto;
   border-radius: 6px;
-  border: 1px solid ${BG_COLOR};
+  border: 1px solid #000;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.12);
   background: #fff;
   font-size: 14px;
@@ -137,15 +136,15 @@ const InputSubject: FC<InputSubjectProps> = ({ addSubject }) => {
       <InputWrapper>
         <InputBlock>
           <div className={'label'}>课程</div>
-          <Input className={'name'} type="text" value={name} onChange={onNameChange} />
+          <Input className={'name'} type="text" placeholder={'课程名称'} value={name} onChange={onNameChange} />
         </InputBlock>
         <InputBlock>
           <div className={'label'}>学分</div>
-          <Input type="text" value={credit} onChange={forceNumberInput(onCreditChange)} />
+          <Input type="text" placeholder={'学分'} value={credit} onChange={forceNumberInput(onCreditChange)} />
         </InputBlock>
         <InputBlock>
           <div className={'label'}>总评</div>
-          <Input type="text" value={grade} onChange={forceNumberInput(onGradeChange)} />
+          <Input type="text" placeholder={'总评'} value={grade} onChange={forceNumberInput(onGradeChange)} />
         </InputBlock>
       </InputWrapper>
 

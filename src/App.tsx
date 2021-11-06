@@ -3,10 +3,10 @@ import './App.module.scss';
 import React, { FC } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 
-import Sidebar from '@layouts/Sidebar';
 import Main from '@layouts/Main';
 
 import styled, { createGlobalStyle } from 'styled-components';
+import Header from '@layouts/Header';
 
 const GlobalStyle = createGlobalStyle`
 * {
@@ -18,8 +18,10 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 const AppRoot = styled.div`
-  min-height: 100vh;
-  display: flex;
+  position: absolute;
+  height: 100vh;
+  width: 100vw;
+  overflow: auto;
 `;
 
 const App: FC = () => {
@@ -27,7 +29,8 @@ const App: FC = () => {
     <BrowserRouter>
       <GlobalStyle />
       <AppRoot>
-        <Sidebar />
+        <Header />
+        {/* <Sidebar /> */}
         <Main />
       </AppRoot>
     </BrowserRouter>
