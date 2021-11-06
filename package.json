@@ -1,12 +1,12 @@
 {
   "name": "website",
-  "description": "front end application with react + ts",
+  "description": "personal website of superfree(youxian)",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
     "start": "cross-env NODE_ENV=development webpack serve",
-    "build": "cross-env NODE_ENV=production webpack && ./upload"
+    "build": "cross-env NODE_ENV=production webpack && ./build/upload"
   },
   "dependencies": {
     "@youxian/utils": "^0.0.2",
