@@ -1,6 +1,6 @@
 import Icon, { IconType } from '@components/Icon';
 import { TRANS_ALL_FAST } from '@constant/styles';
-import { getItem, LocalStorageKey, setItem } from '@libs/localStorage';
+import { getItem, LocalStorageKey, setItem } from '@utils/localStorage';
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import styled from 'styled-components';
 import InputSubject from './components/InputSubject';

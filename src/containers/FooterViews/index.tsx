@@ -1,4 +1,4 @@
-import { getItem, LocalStorageKey, setItem } from '@libs/localStorage';
+import { getItem, LocalStorageKey, setItem } from '@utils/localStorage';
 import { useMount } from '@youxian/utils';
 import React, { useState } from 'react';
 
