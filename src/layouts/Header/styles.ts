@@ -1,4 +1,4 @@
-import { BACKDROP_BLUR } from '@constant/styles';
+import { BACKDROP_BLUR, TRANS_ALL_FAST } from '@constant/styles';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
@@ -7,7 +7,7 @@ export const HEADER_PADDING_RIGHT = 60;
 export const HEADER_BG_COLOR = 'rgba(255, 255, 255, 0.7)';
 
 export const MENU_ITEM_UNDERLINE_WIDTH = 2;
-export const MENU_ITEM_UNDERLINE_PADDING = 24;
+export const MENU_ITEM_LINK_PADDING = `4px 24px 0`;
 export const MENU_ITEM_UNDERLINE_COLOR = 'rgb(211, 211, 211)';
 
 /**
@@ -44,7 +44,13 @@ export const Menu = styled.ul`
  */
 export const MenuItem = styled.li`
   position: relative;
+  color: rgba(0, 0, 0, 0.32);
   list-style: none;
+  ${TRANS_ALL_FAST}
+
+  &.selected {
+    color: rgba(0, 0, 0, 1);
+  }
 
   /* 选中下划线 */
   &::before {
@@ -72,7 +78,7 @@ export const MenuItem = styled.li`
 export const StyledLink = styled(Link)`
   display: inline-block;
   height: 100%;
-  padding: 0 ${MENU_ITEM_UNDERLINE_PADDING}px;
+  padding: ${MENU_ITEM_LINK_PADDING};
   line-height: ${HEADER_HEIGHT}px;
   cursor: pointer;
   color: inherit;
