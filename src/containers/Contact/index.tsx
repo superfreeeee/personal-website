@@ -16,6 +16,7 @@ import {
   OuterLink,
   Title,
 } from './styles';
+import { CSDN_BLOG_LINK, GITHUB_PROFILE_LINK, INSTAGRAM_PROFILE_LINK, NPM_PROFILE_LINK } from '@constant/config';
 
 interface ContactInfo {
   icon: IconType;
@@ -24,9 +25,10 @@ interface ContactInfo {
 }
 
 const contactList: ContactInfo[] = [
-  { icon: IconType.Github, href: 'https://github.com/superfreeeee', title: 'Github Profile' },
-  { icon: IconType.Blogger, href: 'https://blog.csdn.net/weixin_44691608', title: 'CSDN Column' },
-  { icon: IconType.Instagram, href: 'https://www.instagram.com/superfreeeee/', title: 'Instagram Profile' },
+  { icon: IconType.Github, href: GITHUB_PROFILE_LINK, title: 'Github Profile' },
+  { icon: IconType.Library, href: NPM_PROFILE_LINK, title: 'Npm Profile' },
+  { icon: IconType.Blogger, href: CSDN_BLOG_LINK, title: 'CSDN Column' },
+  { icon: IconType.Instagram, href: INSTAGRAM_PROFILE_LINK, title: 'Instagram Profile' },
 ];
 
 const TOOLTIP_AUTO_CLOSE_DELAY = 2000;

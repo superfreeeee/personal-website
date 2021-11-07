@@ -99,12 +99,14 @@ export const CopiedToolTip = styled.div`
 export const CopyBtn = styled.button`
   border: none;
   height: 100%;
-  padding: 0 13px 0 11px;
+  padding: 0 8px 0 6px;
   border-left: 1px solid rgb(200, 200, 200);
   border-top-right-radius: 8px;
   border-bottom-right-radius: 8px;
   background-color: inherit;
   cursor: pointer;
+  transition: all 0.2s ease;
+
   &:hover {
     background-color: rgb(233, 233, 233);
   }

@@ -2,11 +2,11 @@ import './App.module.scss';
 
 import React, { FC } from 'react';
 import { BrowserRouter } from 'react-router-dom';
+import styled, { createGlobalStyle } from 'styled-components';
 
 import Main from '@layouts/Main';
-
-import styled, { createGlobalStyle } from 'styled-components';
 import Header from '@layouts/Header';
+import Footer from '@layouts/Footer';
 
 const GlobalStyle = createGlobalStyle`
 * {
@@ -30,8 +30,8 @@ const App: FC = () => {
       <GlobalStyle />
       <AppRoot>
         <Header />
-        {/* <Sidebar /> */}
         <Main />
+        <Footer />
       </AppRoot>
     </BrowserRouter>
   );

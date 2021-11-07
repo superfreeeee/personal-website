@@ -1,5 +1,6 @@
 export enum LocalStorageKey {
   GPACalculatorSubject = '__youxian_website_gpa_calculator_subjects',
+  ViewsCount = '__youxian_website_views'
 }
 
 export const getItem = (key: LocalStorageKey) => {

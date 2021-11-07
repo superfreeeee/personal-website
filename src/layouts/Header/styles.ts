@@ -1,3 +1,4 @@
+import { BACKDROP_BLUR } from '@constant/styles';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
@@ -19,7 +20,7 @@ export const Container = styled.section`
   width: 100%;
   padding-right: ${HEADER_PADDING_RIGHT}px;
   background-color: ${HEADER_BG_COLOR};
-  backdrop-filter: blur(10px);
+  ${BACKDROP_BLUR}
   text-align: right;
 `;
 
