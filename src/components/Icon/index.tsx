@@ -34,6 +34,8 @@ export enum IconType {
   LinkExternal = 'bx-link-external',
   Trash = 'bx-trash',
   Instagram = 'bxl-instagram',
+  Copy = 'bx-copy-alt',
+  Check = 'bx-check',
 }
 
 interface IconProps {
