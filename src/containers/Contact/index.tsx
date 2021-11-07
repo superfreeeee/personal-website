@@ -14,6 +14,9 @@ import {
   OuterLink,
   Title,
 } from './styles';
+import useCopy from '@hooks/useCopy';
+import useTimer from '@hooks/useTimer';
+import { copy } from '@utils';
 
 interface ContactInfo {
   icon: IconType;
@@ -27,53 +30,37 @@ const contactList: ContactInfo[] = [
   { icon: IconType.Instagram, href: 'https://www.instagram.com/superfreeeee/', title: 'Instagram Profile' },
 ];
 
-const useClickCopy = (text: string) => {
-  const copy = useCallback(() => {
-    const t = document.createTextNode(text);
-    document.body.appendChild(t);
-
-    const range = document.createRange();
-    range.selectNodeContents(t);
-
-    const selection = window.getSelection();
-    selection.removeAllRanges();
-    selection.addRange(range);
-
-    document.execCommand('copy');
-    document.body.removeChild(t);
-  }, [text]);
-
-  return copy;
-};
-
 const TOOLTIP_AUTO_CLOSE_DELAY = 2000;
 
+const email = 'superfreeeee@gmail.com';
+
 const Contact: FC = () => {
+  // 状态
   const [copied, setCopied] = useState(false);
-  const timerRef = useRef<number>(null);
+  const [timer, setTimer] = useState(null);
 
-  const email = 'superfreeeee@gmail.com';
-
-  const copy = useClickCopy(email);
+  // 复制
+  useTimer(timer);
 
   const copyEmail = useCallback(
     (e) => {
       if (!copied) {
-        copy();
+        copy(email);
         setCopied(true);
         e.target.focus();
 
-        clearTimeout(timerRef.current);
-        timerRef.current = window.setTimeout(() => {
+        const timer = window.setTimeout(() => {
           setCopied(false);
         }, TOOLTIP_AUTO_CLOSE_DELAY);
+        setTimer(timer);
       }
     },
-    [copy, copied]
+    [copied]
   );
 
   const copyBlur = useCallback(() => {
     setCopied(false);
+    setTimer(null);
   }, []);
 
   return (

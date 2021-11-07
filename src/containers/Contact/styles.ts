@@ -86,7 +86,7 @@ export const CopiedToolTip = styled.div`
   background-color: #000;
   font-size: 14px;
   transform: translate(-50%, -120%);
-  transition: all 0.5s ease;
+  transition: all 0.4s ease;
   opacity: 0;
   cursor: auto;
   user-select: none;
