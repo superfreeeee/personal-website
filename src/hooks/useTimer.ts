@@ -2,6 +2,10 @@ import { useEffect, useRef } from 'react';
 
 const noop = () => {};
 
+/**
+ * auto clearTimeout wherever timer change
+ * @param timer
+ */
 const useTimer = (timer?: number) => {
   const clearRef = useRef(noop);
 

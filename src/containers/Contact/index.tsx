@@ -1,7 +1,9 @@
-import React, { FC, useCallback, useRef, useState } from 'react';
+import React, { FC, useCallback, useState } from 'react';
 import classNames from 'classnames';
 
 import Icon, { IconType } from '@components/Icon';
+import useTimer from '@hooks/useTimer';
+import { copy } from '@utils';
 import {
   ContactItem,
   ContactList,
@@ -14,9 +16,6 @@ import {
   OuterLink,
   Title,
 } from './styles';
-import useCopy from '@hooks/useCopy';
-import useTimer from '@hooks/useTimer';
-import { copy } from '@utils';
 
 interface ContactInfo {
   icon: IconType;
