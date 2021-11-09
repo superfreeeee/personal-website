@@ -40,7 +40,7 @@ export enum IconType {
   React = 'bxl-react',
   Redux = 'bxl-redux',
   NodeJS = 'bxl-nodejs',
-  SpringBoot = 'bxl-spring-boot',
+  Spring = 'bxl-spring-boot',
   Docker = 'bxl-docker',
   BasketBall = 'bxs-basketball',
   Movie = 'bx-movie',
