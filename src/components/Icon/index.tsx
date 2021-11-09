@@ -1,11 +1,12 @@
-import classNames from 'classnames';
 import React, { FC } from 'react';
 import styled from 'styled-components';
+import classNames from 'classnames';
 
 interface _IconProps {
   size: number;
   width?: number;
   height?: number;
+  style?: React.CSSProperties;
 }
 
 const I = styled.i<_IconProps>`
@@ -36,23 +37,36 @@ export enum IconType {
   Instagram = 'bxl-instagram',
   Copy = 'bx-copy-alt',
   Check = 'bx-check',
+  React = 'bxl-react',
+  Redux = 'bxl-redux',
+  NodeJS = 'bxl-nodejs',
+  SpringBoot = 'bxl-spring-boot',
+  Docker = 'bxl-docker',
+  BasketBall = 'bxs-basketball',
+  Movie = 'bx-movie',
+  Music = 'bx-music',
+  Games = 'bx-joystick-alt',
+  Coding = 'bx-code-alt',
+  Rss = 'bx-rss',
 }
 
-interface IconProps {
+export interface IconProps {
   type: IconType;
+  className?: string;
+  title?: string;
   size?: number;
   width?: number;
   height?: number;
-  className?: string;
+  style?: React.CSSProperties;
 }
 
 const defaultProps = {
   size: 24,
 };
 
-const Icon: FC<IconProps> = ({ type, className, ...others }) => {
+const Icon: FC<IconProps> = ({ type, className, title, ...others }) => {
   const props = { ...defaultProps, ...others };
-  return <I className={classNames('bx', type, className)} {...props} />;
+  return <I title={title} className={classNames('bx', type, className)} {...props} />;
 };
 
 export default Icon;

@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 
-const noop = () => {};
+import { noop } from '@utils/functional';
 
 /**
  * auto clearTimeout wherever timer change

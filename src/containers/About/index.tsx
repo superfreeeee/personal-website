@@ -1,59 +1,39 @@
+import React, { FC, ReactElement } from 'react';
+
 import { AVATAR1_SRC, AVATAR2_SRC } from '@constant/image';
-import React, { FC, useCallback, useEffect, useRef, useState } from 'react';
-import { Avatar, AvatarSection, AvatarWrapper, Container } from './styles';
+import TechStack from './TechStack';
+import Hobby from './Hobby';
+import {
+  Avatar,
+  AvatarSection,
+  AvatarWrapper,
+  Container,
+  HolderIcon,
+  InfoBlock,
+  InfoBlockArea,
+  InfoDetail,
+  InfoSection,
+  InfoTitle,
+  InfoTitleProps,
+  InfoWrapper,
+} from './styles';
+import { useInvert } from './hooks';
+import Icon, { IconType } from '@components/Icon';
 
-const INVERT_AVATAR_TIMESTAMP = 5000;
-const noop = () => {};
+interface InfoData {
+  area: InfoBlockArea;
+  title: string;
+  detail: string | number | ReactElement;
+  titleProps?: InfoTitleProps;
+}
 
-/**
- * 头像换位
- * @returns
- */
-const useInvert = () => {
-  const [invert, setInvert] = useState(false);
-  const clearTimerRef = useRef(noop);
-
-  const switchInvert = useCallback((prev: boolean) => {
-    setInvert(!prev);
-  }, []);
-
-  const setTimer = useCallback((prev: boolean) => {
-    // 清理上一个计时器
-    clearTimerRef.current();
-
-    // 设置计时器
-    const timer = window.setInterval(() => {
-      switchInvert(prev);
-      prev = !prev;
-    }, INVERT_AVATAR_TIMESTAMP);
-    // console.log(`create timer: ${timer}`);
-
-    // 保留清理函数
-    clearTimerRef.current = () => {
-      // console.log(`clear timer: ${timer}`);
-      clearInterval(timer);
-      clearTimerRef.current = noop;
-    };
-  }, []);
-
-  useEffect(() => {
-    // onMount 设置
-    setTimer(invert);
-
-    // willUnMount 清理
-    return () => {
-      clearTimerRef.current();
-    };
-  }, []);
-
-  // 立即交换
-  const invertImmediate = useCallback(() => {
-    switchInvert(invert);
-    setTimer(!invert);
-  }, [invert, setTimer]);
-
-  return { invert, invertImmediate };
-};
+const personalInfo: InfoData[] = [
+  { area: InfoBlockArea.NAME, title: 'Name', detail: 'Tsai ShangTa' },
+  { area: InfoBlockArea.GENDER, title: 'Gender', detail: 'Male' },
+  { area: InfoBlockArea.AGE, title: 'Age', detail: 22 },
+  { area: InfoBlockArea.TECH, title: 'Tech Stack', detail: <TechStack /> },
+  { area: InfoBlockArea.HOBBY, title: 'Hobby', detail: <Hobby />, titleProps: { align: 'right' } },
+];
 
 /**
  * About me 页面
@@ -64,13 +44,30 @@ const About: FC = () => {
 
   return (
     <Container>
-      <AvatarSection onClick={invertImmediate}>
-        <AvatarWrapper>
-          <Avatar src={AVATAR1_SRC} front={!invert} />
-          <Avatar src={AVATAR2_SRC} front={invert} />
+      <AvatarSection>
+        <AvatarWrapper onClick={invertImmediate}>
+          <Avatar src={AVATAR1_SRC} front={!invert} title={'Superfree'} />
+          <Avatar src={AVATAR2_SRC} front={invert} title={'Youxian'} />
         </AvatarWrapper>
       </AvatarSection>
-      <div>Content</div>
+      <InfoSection>
+        <InfoWrapper>
+          {personalInfo.map(({ area, title, detail, titleProps = {} }) => {
+            return (
+              <InfoBlock key={area} area={area}>
+                <InfoTitle {...titleProps}>{title}</InfoTitle>
+                <InfoDetail>{detail}</InfoDetail>
+              </InfoBlock>
+            );
+          })}
+          <InfoBlock area="E">
+            <HolderIcon type={IconType.Rss} style={{ bottom: 0, left: 0 }} />
+          </InfoBlock>
+          <InfoBlock area="G">
+            <HolderIcon type={IconType.Rss} style={{ top: 0, right: 0, transform: 'rotate(180deg)' }} />
+          </InfoBlock>
+        </InfoWrapper>
+      </InfoSection>
     </Container>
   );
 };

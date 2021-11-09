@@ -1,0 +1,1 @@
+export const INVERT_AVATAR_TIMESTAMP = 5000;
