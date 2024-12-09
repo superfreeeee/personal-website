@@ -1,8 +1,6 @@
+import { ChangeEvent, useCallback, useEffect, useState } from 'react';
 
-import React, { ChangeEvent, FC, useCallback, useState } from 'react';
-import { useMount } from '@youxian/utils';
-
-const Base64Coding: FC = () => {
+const Base64Coding = () => {
   const [plain, setPlain] = useState('');
   const [base64, setBase64] = useState('');
 
@@ -18,11 +16,11 @@ const Base64Coding: FC = () => {
     setPlain(window.atob(newBase64));
   }, []);
 
-  useMount(() => {
+  useEffect(() => {
     const initPlain = 'Hello world';
     setPlain(initPlain);
     setBase64(window.btoa(initPlain));
-  });
+  }, []);
 
   return (
     <div>

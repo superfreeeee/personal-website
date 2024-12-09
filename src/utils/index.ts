@@ -6,9 +6,12 @@ export const copy = (text: string) => {
   range.selectNodeContents(t);
 
   const selection = window.getSelection();
-  selection.removeAllRanges();
-  selection.addRange(range);
+  if (selection) {
+    selection.removeAllRanges();
+    selection.addRange(range);
 
-  document.execCommand('copy');
+    document.execCommand('copy');
+  }
+
   document.body.removeChild(t);
 };

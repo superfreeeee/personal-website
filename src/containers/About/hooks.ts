@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 
-import { noop } from '@utils/functional';
+import { noop } from '@/utils/functional';
 import { INVERT_AVATAR_TIMESTAMP } from './config';
 
 /**

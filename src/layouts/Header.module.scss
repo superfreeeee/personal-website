@@ -1,0 +1,61 @@
+.HeaderContainer {
+  display: flex;
+  justify-content: flex-end;
+
+  padding-right: 60px;
+
+  background-color: #ffffffb3;
+  backdrop-filter: blur(10px);
+}
+
+.HeaderMenu {
+  display: flex;
+  height: 60px;
+  margin-top: 8px;
+}
+
+.HeaderMenuItem {
+  position: relative;
+
+  color: #00000052;
+
+  list-style: none;
+  cursor: pointer;
+
+  transition: all 0.15s ease-in;
+
+  &.selected {
+    color: rgba(0, 0, 0, 1);
+  }
+
+  /* 选中下划线 */
+  &::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+
+    width: 0%;
+    height: 2px;
+
+    background-color: #d3d3d3;
+    opacity: 0;
+    transition: width 0.4s ease;
+  }
+
+  &:hover::before,
+  &.selected::before {
+    opacity: 1;
+    width: 100%;
+  }
+}
+
+.HeaderMenuItemLabel {
+  display: inline-block;
+  height: 100%;
+  padding: 0 24px;
+
+  text-decoration: none;
+  line-height: 60px;
+  color: inherit;
+}

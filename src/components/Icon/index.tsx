@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import type { CSSProperties } from 'react';
 import styled from 'styled-components';
 import classNames from 'classnames';
 
@@ -6,7 +6,7 @@ interface _IconProps {
   size: number;
   width?: number;
   height?: number;
-  style?: React.CSSProperties;
+  style?: CSSProperties;
 }
 
 const I = styled.i<_IconProps>`
@@ -57,16 +57,14 @@ export interface IconProps {
   size?: number;
   width?: number;
   height?: number;
-  style?: React.CSSProperties;
+  style?: CSSProperties;
 }
 
 const defaultProps = {
   size: 24,
 };
 
-const Icon: FC<IconProps> = ({ type, className, title, ...others }) => {
+export const Icon = ({ type, className, title, ...others }: IconProps) => {
   const props = { ...defaultProps, ...others };
   return <I title={title} className={classNames('bx', type, className)} {...props} />;
 };
-
-export default Icon;

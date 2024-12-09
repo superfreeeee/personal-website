@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { IconType } from '@components/Icon';
+import { IconType } from '@/components/Icon';
 import { DetailContainer, TechIcon } from '../styles';
 import {
   REACT_HOME_LINK,
@@ -8,7 +8,7 @@ import {
   NODEJS_HOME_LINK,
   SPRING_BOOT_HOME_LINK,
   DOCKER_HOME_LINK,
-} from '@constant/config';
+} from '@/constant/config';
 import { TechLink } from './styles';
 
 const TechStack = () => {

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { IconType } from '@components/Icon';
+import { IconType } from '@/components/Icon';
 import { DetailContainer, TechIcon } from '../styles';
 
 const Hobby = () => {

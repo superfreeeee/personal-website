@@ -1,9 +1,8 @@
-import React, { FC, useCallback, useState } from 'react';
+import { useCallback, useRef, useState } from 'react';
 import classNames from 'classnames';
 
-import Icon, { IconType } from '@components/Icon';
-import useTimer from '@hooks/useTimer';
-import { copy } from '@utils';
+import { Icon, IconType } from '@/components/Icon';
+import { copy } from '@/utils';
 import {
   ContactItem,
   ContactList,
@@ -16,7 +15,7 @@ import {
   OuterLink,
   Title,
 } from './styles';
-import { CSDN_BLOG_LINK, GITHUB_PROFILE_LINK, INSTAGRAM_PROFILE_LINK, NPM_PROFILE_LINK } from '@constant/config';
+import { CSDN_BLOG_LINK, GITHUB_PROFILE_LINK, INSTAGRAM_PROFILE_LINK, NPM_PROFILE_LINK } from '@/constant/config';
 
 interface ContactInfo {
   icon: IconType;
@@ -25,44 +24,55 @@ interface ContactInfo {
 }
 
 const contactList: ContactInfo[] = [
-  { icon: IconType.Github, href: GITHUB_PROFILE_LINK, title: 'Github Profile' },
-  { icon: IconType.Library, href: NPM_PROFILE_LINK, title: 'Npm Profile' },
-  { icon: IconType.Blogger, href: CSDN_BLOG_LINK, title: 'CSDN Column' },
-  { icon: IconType.Instagram, href: INSTAGRAM_PROFILE_LINK, title: 'Instagram Profile' },
+  {
+    icon: IconType.Github,
+    href: GITHUB_PROFILE_LINK,
+    title: 'Github Profile',
+  },
+  {
+    icon: IconType.Library,
+    href: NPM_PROFILE_LINK,
+    title: 'Npm Profile',
+  },
+  {
+    icon: IconType.Blogger,
+    href: CSDN_BLOG_LINK,
+    title: 'CSDN Column',
+  },
+  {
+    icon: IconType.Instagram,
+    href: INSTAGRAM_PROFILE_LINK,
+    title: 'Instagram Profile',
+  },
 ];
 
 const TOOLTIP_AUTO_CLOSE_DELAY = 2000;
 
-const email = 'superfreeeee@gmail.com';
+const EMAIL_ADDR = 'superfreeeee@gmail.com';
 
-const Contact: FC = () => {
-  // 状态
+export const Contact = () => {
   const [copied, setCopied] = useState(false);
-  const [timer, setTimer] = useState(null);
 
-  // 复制
-  useTimer(timer);
-
+  const copyTimerRef = useRef<number | undefined>();
   const copyEmail = useCallback(
     (e) => {
       if (!copied) {
-        copy(email);
+        copy(EMAIL_ADDR);
         setCopied(true);
         e.target.focus();
 
-        const timer = window.setTimeout(() => {
+        copyTimerRef.current = window.setTimeout(() => {
           setCopied(false);
         }, TOOLTIP_AUTO_CLOSE_DELAY);
-        setTimer(timer);
       }
+
+      return () => {
+        window.clearTimeout(copyTimerRef.current);
+        copyTimerRef.current = undefined;
+      };
     },
     [copied]
   );
-
-  const copyBlur = useCallback(() => {
-    setCopied(false);
-    setTimer(null);
-  }, []);
 
   return (
     <Container>
@@ -79,10 +89,10 @@ const Contact: FC = () => {
         })}
       </ContactList>
       <CopyBar>
-        <Email>{email}</Email>
+        <Email>{EMAIL_ADDR}</Email>
         <CopyPad>
           <CopiedToolTip className={classNames({ copied })}>Copied!</CopiedToolTip>
-          <CopyBtn onClick={copyEmail} onBlur={copyBlur}>
+          <CopyBtn onClick={copyEmail}>
             <Icon type={copied ? IconType.Check : IconType.Copy} width={30} size={20} height={30} />
           </CopyBtn>
         </CopyPad>
@@ -90,5 +100,3 @@ const Contact: FC = () => {
     </Container>
   );
 };
-
-export default Contact;

@@ -1,6 +1,6 @@
 import styles from './index.module.scss';
 
-import React, { ChangeEvent, ChangeEventHandler, FC, Fragment, useState } from 'react';
+import { ChangeEvent, ChangeEventHandler, Fragment, useState } from 'react';
 
 enum TargetType {
   BINARY,
@@ -46,7 +46,7 @@ const calcTarget = (num: number): { [type in TargetType]: string } => {
   return result;
 };
 
-const BHDConverter: FC = () => {
+const BHDConverter = () => {
   const [value, onValueChange] = useNumberInput();
 
   const result = calcTarget(Number(value));

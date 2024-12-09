@@ -47,6 +47,7 @@ export const OuterLink = styled.a.attrs({
   border-radius: 8px;
   color: inherit;
   text-decoration: none;
+  transition: background-color 100ms ease-in;
 
   &:hover {
     background-color: ${LINK_HOVER_BG_COLOR};
@@ -62,7 +63,7 @@ export const CopyBar = styled.div`
 
 export const Email = styled.div`
   flex: 1;
-  padding: 6px 14px;
+  padding: 6px 32px;
   font-size: 20px;
 `;
 

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import Icon, { IconProps } from '@components/Icon';
+import { Icon } from '@/components/Icon';
 
 export const AVATAR_FRONT_SIZE = 300; //    前头像大小
 export const AVATAR_BACK_SIZE = 240; //     后头像大小
@@ -14,7 +14,7 @@ export const INFO_BLOCK_PADDING_TOP = 16; //    个人信息内容块上间距
 /**
  * 外容器
  */
-export const Container = styled.main`
+export const Container = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   min-height: 100%;

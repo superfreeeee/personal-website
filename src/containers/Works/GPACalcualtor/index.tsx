@@ -1,8 +1,9 @@
-import Icon, { IconType } from '@components/Icon';
-import { TRANS_ALL_FAST } from '@constant/styles';
-import { getItem, LocalStorageKey, setItem } from '@utils/localStorage';
-import React, { useCallback, useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import styled from 'styled-components';
+
+import { Icon, IconType } from '@/components/Icon';
+import { TRANS_ALL_FAST } from '@/constant/styles';
+import { getItem, LocalStorageKey, setItem } from '@/utils/localStorage';
 import InputSubject from './components/InputSubject';
 
 import { Subject } from './interface';
@@ -71,7 +72,7 @@ const useSubjects = (): [
     if (subjects) {
       setItem(LocalStorageKey.GPACalculatorSubject, subjects);
     } else {
-      subjects = getItem(LocalStorageKey.GPACalculatorSubject) || [];
+      subjects = (getItem(LocalStorageKey.GPACalculatorSubject) || []) as Subject[];
     }
     return subjects;
   }, []);

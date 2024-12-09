@@ -1,11 +1,11 @@
-import About from '@containers/About';
-import Blog from '@containers/Blog';
-import Contact from '@containers/Contact';
-import Home from '@containers/Home';
-import Works from '@containers/Works';
+import { About } from '@/containers/About';
+import { Blog } from '@/containers/Blog';
+import { Contact } from '@/containers/Contact';
+import { Home } from '@/containers/Home';
+import { Works } from '@/containers/Works';
 import { RouteConfig } from './interface';
 
-const routes: RouteConfig[] = [
+export const routes: RouteConfig[] = [
   {
     path: '/',
     label: 'Home',
@@ -32,5 +32,3 @@ const routes: RouteConfig[] = [
     component: Contact,
   },
 ];
-
-export default routes;

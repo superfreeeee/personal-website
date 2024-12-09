@@ -1,14 +1,17 @@
-import React, { FC } from 'react';
+import { memo } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 
-import routes from '../../routes';
-import { Container } from './styles';
+import { RouteConfig } from '@/routes/interface';
 
-interface MainProps {}
+import styles from './Main.module.scss';
 
-const Main: FC<MainProps> = ({}) => {
+interface IMainProps {
+  routes: RouteConfig[];
+}
+
+export const Main = memo(({ routes }: IMainProps) => {
   return (
-    <Container>
+    <main className={styles.MainContainer}>
       <Switch>
         {routes.map(({ path, component }) => {
           return <Route key={path} exact path={path} component={component} />;
@@ -17,8 +20,6 @@ const Main: FC<MainProps> = ({}) => {
           <Redirect to={'/'} />
         </Route>
       </Switch>
-    </Container>
+    </main>
   );
-};
-
-export default Main;
+});

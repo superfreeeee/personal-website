@@ -1,7 +1,7 @@
-import React, { ChangeEvent, ChangeEventHandler, FC, useCallback, useState } from 'react';
+import { ChangeEvent, ChangeEventHandler, useCallback, useState } from 'react';
 import styled from 'styled-components';
 
-import useInput from '@hooks/useInput';
+import { useInput } from '@/hooks/useInput';
 import { Subject } from '../interface';
 
 const Wrapper = styled.div``;
@@ -68,7 +68,7 @@ interface InputSubjectProps {
   addSubject: (subject: Subject) => void;
 }
 
-const InputSubject: FC<InputSubjectProps> = ({ addSubject }) => {
+const InputSubject = ({ addSubject }: InputSubjectProps) => {
   const [name, onNameChange, setName] = useInput();
   const [credit, onCreditChange, setCredit] = useInput();
   const [grade, onGradeChange, setGrade] = useInput();

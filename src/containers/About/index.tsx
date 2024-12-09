@@ -1,6 +1,8 @@
-import React, { FC, ReactElement } from 'react';
+import { ReactNode } from 'react';
 
-import { AVATAR1_SRC, AVATAR2_SRC } from '@constant/image';
+import { AVATAR1_SRC, AVATAR2_SRC } from '@/constant/image';
+import { IconType } from '@/components/Icon';
+
 import TechStack from './TechStack';
 import Hobby from './Hobby';
 import {
@@ -18,28 +20,49 @@ import {
   InfoWrapper,
 } from './styles';
 import { useInvert } from './hooks';
-import Icon, { IconType } from '@components/Icon';
+import { getAge } from './utils';
 
 interface InfoData {
   area: InfoBlockArea;
   title: string;
-  detail: string | number | ReactElement;
+  detail: ReactNode;
   titleProps?: InfoTitleProps;
 }
 
 const personalInfo: InfoData[] = [
-  { area: InfoBlockArea.NAME, title: 'Name', detail: 'Tsai ShangTa' },
-  { area: InfoBlockArea.GENDER, title: 'Gender', detail: 'Male' },
-  { area: InfoBlockArea.AGE, title: 'Age', detail: 22 },
-  { area: InfoBlockArea.TECH, title: 'Tech Stack', detail: <TechStack /> },
-  { area: InfoBlockArea.HOBBY, title: 'Hobby', detail: <Hobby />, titleProps: { align: 'right' } },
+  {
+    area: InfoBlockArea.NAME,
+    title: 'Name',
+    detail: 'Tsai ShangTa',
+  },
+  {
+    area: InfoBlockArea.GENDER,
+    title: 'Gender',
+    detail: 'Male',
+  },
+  {
+    area: InfoBlockArea.AGE,
+    title: 'Age',
+    detail: getAge(),
+  },
+  {
+    area: InfoBlockArea.TECH,
+    title: 'Tech Stack',
+    detail: <TechStack />,
+  },
+  {
+    area: InfoBlockArea.HOBBY,
+    title: 'Hobby',
+    detail: <Hobby />,
+    titleProps: { align: 'right' },
+  },
 ];
 
 /**
  * About me 页面
  * @returns
  */
-const About: FC = () => {
+export const About = () => {
   const { invert, invertImmediate } = useInvert();
 
   return (
@@ -71,5 +94,3 @@ const About: FC = () => {
     </Container>
   );
 };
-
-export default About;
