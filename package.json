@@ -1,7 +1,8 @@
 {
-  "name": "website",
+  "name": "youxian.me",
   "description": "personal website of superfree(youxian)",
   "version": "1.0.0",
+  "type": "module",
   "license": "MIT",
   "scripts": {
     "dev": "vite dev",
