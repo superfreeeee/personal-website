@@ -1,18 +1,16 @@
-import React from 'react';
+import { BiBasketball, BiCodeAlt, BiMoviePlay, BiMusic } from 'react-icons/bi';
 
-import { IconType } from '@/components/Icon';
-import { DetailContainer, TechIcon } from '../styles';
+import styles from './index.module.scss';
 
-const Hobby = () => {
+const HOBBY_ICON_SIZE = 50;
+
+export const Hobby = () => {
   return (
-    <DetailContainer>
-      <TechIcon type={IconType.BasketBall} title={'Basketball'} />
-      <TechIcon type={IconType.Movie} title={'Movie'} />
-      <TechIcon type={IconType.Music} title={'Music'} />
-      <TechIcon type={IconType.Games} title={'Games'} />
-      <TechIcon type={IconType.Coding} title={'Coding'} />
-    </DetailContainer>
+    <div className={styles.HobbyContainer}>
+      <BiBasketball size={HOBBY_ICON_SIZE} title="Basketball" />
+      <BiMoviePlay size={HOBBY_ICON_SIZE} title="Movies" />
+      <BiMusic size={HOBBY_ICON_SIZE} title="Music" />
+      <BiCodeAlt size={HOBBY_ICON_SIZE} title="Coding" />
+    </div>
   );
 };
-
-export default Hobby;

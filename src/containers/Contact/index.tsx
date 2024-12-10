@@ -1,50 +1,44 @@
-import { useCallback, useRef, useState } from 'react';
+import { ReactNode, useCallback, useRef, useState } from 'react';
+import { SiCsdn, SiGithub, SiInstagram, SiNpm } from 'react-icons/si';
+import { BiCheck, BiCopyAlt } from 'react-icons/bi';
 import classNames from 'classnames';
 
-import { Icon, IconType } from '@/components/Icon';
-import { copy } from '@/utils';
-import {
-  ContactItem,
-  ContactList,
-  Container,
-  CopiedToolTip,
-  CopyBar,
-  CopyBtn,
-  CopyPad,
-  Email,
-  OuterLink,
-  Title,
-} from './styles';
 import { CSDN_BLOG_LINK, GITHUB_PROFILE_LINK, INSTAGRAM_PROFILE_LINK, NPM_PROFILE_LINK } from '@/constant/config';
+import { copy } from '@/utils';
+
+import styles from './index.module.scss';
 
 interface ContactInfo {
-  icon: IconType;
+  icon: ReactNode;
   href: string;
   title: string;
 }
 
+const CONTACT_ITEM_ICON_SIZE = 32;
 const contactList: ContactInfo[] = [
   {
-    icon: IconType.Github,
+    icon: <SiGithub size={CONTACT_ITEM_ICON_SIZE} />,
     href: GITHUB_PROFILE_LINK,
     title: 'Github Profile',
   },
   {
-    icon: IconType.Library,
+    icon: <SiNpm size={CONTACT_ITEM_ICON_SIZE} />,
     href: NPM_PROFILE_LINK,
     title: 'Npm Profile',
   },
   {
-    icon: IconType.Blogger,
+    icon: <SiCsdn size={CONTACT_ITEM_ICON_SIZE} />,
     href: CSDN_BLOG_LINK,
     title: 'CSDN Column',
   },
   {
-    icon: IconType.Instagram,
+    icon: <SiInstagram size={CONTACT_ITEM_ICON_SIZE} />,
     href: INSTAGRAM_PROFILE_LINK,
     title: 'Instagram Profile',
   },
 ];
+
+const COPY_ICON_SIZE = 22;
 
 const TOOLTIP_AUTO_CLOSE_DELAY = 2000;
 
@@ -53,9 +47,9 @@ const EMAIL_ADDR = 'superfreeeee@gmail.com';
 export const Contact = () => {
   const [copied, setCopied] = useState(false);
 
-  const copyTimerRef = useRef<number | undefined>();
+  const copyTimerRef = useRef<number | undefined>(undefined);
   const copyEmail = useCallback(
-    (e) => {
+    (e: any) => {
       if (!copied) {
         copy(EMAIL_ADDR);
         setCopied(true);
@@ -75,28 +69,28 @@ export const Contact = () => {
   );
 
   return (
-    <Container>
-      <Title>Where to find me?</Title>
-      <ContactList>
+    <div className={styles.ContactContainer}>
+      <h1 className={styles.ContactTitle}>Where to find me?</h1>
+      <ul className={styles.ContactList}>
         {contactList.map(({ icon, href, title }) => {
           return (
-            <ContactItem key={href} title={title}>
-              <OuterLink href={href}>
-                <Icon type={icon} size={40} />
-              </OuterLink>
-            </ContactItem>
+            <li key={href} className={styles.ContactItem} title={title}>
+              <a className={styles.ContactItemLink} target="_blank" href={href}>
+                {icon}
+              </a>
+            </li>
           );
         })}
-      </ContactList>
-      <CopyBar>
-        <Email>{EMAIL_ADDR}</Email>
-        <CopyPad>
-          <CopiedToolTip className={classNames({ copied })}>Copied!</CopiedToolTip>
-          <CopyBtn onClick={copyEmail}>
-            <Icon type={copied ? IconType.Check : IconType.Copy} width={30} size={20} height={30} />
-          </CopyBtn>
-        </CopyPad>
-      </CopyBar>
-    </Container>
+      </ul>
+      <div className={styles.ContactEmalBar}>
+        <div className={styles.ContactEmalText}>{EMAIL_ADDR}</div>
+        <div className={styles.ContactEmalCopyPad}>
+          <div className={classNames(styles.ContactEmalCopyTooltip, { [styles.copied]: copied })}>Copied!</div>
+          <button className={styles.ContactEmalCopyBtn} onClick={copyEmail}>
+            {copied ? <BiCheck size={COPY_ICON_SIZE} /> : <BiCopyAlt size={COPY_ICON_SIZE} />}
+          </button>
+        </div>
+      </div>
+    </div>
   );
 };

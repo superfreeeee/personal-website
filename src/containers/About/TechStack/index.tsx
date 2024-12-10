@@ -1,7 +1,6 @@
-import React from 'react';
+import { ReactNode } from 'react';
+import { BiLogoDocker, BiLogoNodejs, BiLogoReact, BiLogoRedux, BiLogoSpringBoot } from 'react-icons/bi';
 
-import { IconType } from '@/components/Icon';
-import { DetailContainer, TechIcon } from '../styles';
 import {
   REACT_HOME_LINK,
   REDUX_HOME_LINK,
@@ -9,28 +8,38 @@ import {
   SPRING_BOOT_HOME_LINK,
   DOCKER_HOME_LINK,
 } from '@/constant/config';
-import { TechLink } from './styles';
 
-const TechStack = () => {
+import styles from './index.module.scss';
+
+const TECH_LINK_STYLE = { color: 'inherit' };
+const TechLink = ({ href, children }: { href: string; children: ReactNode }) => {
   return (
-    <DetailContainer>
-      <TechLink href={REACT_HOME_LINK}>
-        <TechIcon type={IconType.React} title={'React'} />
-      </TechLink>
-      <TechLink href={REDUX_HOME_LINK}>
-        <TechIcon type={IconType.Redux} title={'Redux'} />
-      </TechLink>
-      <TechLink href={NODEJS_HOME_LINK}>
-        <TechIcon type={IconType.NodeJS} title={'Node.js'} />
-      </TechLink>
-      <TechLink href={SPRING_BOOT_HOME_LINK}>
-        <TechIcon type={IconType.Spring} title={'Spring'} />
-      </TechLink>
-      <TechLink href={DOCKER_HOME_LINK}>
-        <TechIcon type={IconType.Docker} title={'Docker'} />
-      </TechLink>
-    </DetailContainer>
+    <a style={TECH_LINK_STYLE} href={href} target="_blank">
+      {children}
+    </a>
   );
 };
 
-export default TechStack;
+const TECH_ICON_SIZE = 50;
+
+export const TechStack = () => {
+  return (
+    <div className={styles.TechStackContainer}>
+      <TechLink href={REACT_HOME_LINK}>
+        <BiLogoReact size={TECH_ICON_SIZE} title="React" />
+      </TechLink>
+      <TechLink href={REDUX_HOME_LINK}>
+        <BiLogoRedux size={TECH_ICON_SIZE} title="Redux" />
+      </TechLink>
+      <TechLink href={NODEJS_HOME_LINK}>
+        <BiLogoNodejs size={TECH_ICON_SIZE} title="Node.js" />
+      </TechLink>
+      <TechLink href={SPRING_BOOT_HOME_LINK}>
+        <BiLogoSpringBoot size={TECH_ICON_SIZE} title="Spring" />
+      </TechLink>
+      <TechLink href={DOCKER_HOME_LINK}>
+        <BiLogoDocker size={TECH_ICON_SIZE} title="Docker" />
+      </TechLink>
+    </div>
+  );
+};

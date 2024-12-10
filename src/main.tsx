@@ -1,7 +1,5 @@
 import { createRoot } from 'react-dom/client';
 
-import 'boxicons/css/boxicons.min.css';
-
 import { App } from './App';
 
 const loadApp = async () => {

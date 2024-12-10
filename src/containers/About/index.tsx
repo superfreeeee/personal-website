@@ -1,16 +1,15 @@
 import { ReactNode } from 'react';
+import { BiRss } from 'react-icons/bi';
 
 import { AVATAR1_SRC, AVATAR2_SRC } from '@/constant/image';
-import { IconType } from '@/components/Icon';
 
-import TechStack from './TechStack';
-import Hobby from './Hobby';
+import { TechStack } from './TechStack';
+import { Hobby } from './Hobby';
 import {
   Avatar,
   AvatarSection,
   AvatarWrapper,
   Container,
-  HolderIcon,
   InfoBlock,
   InfoBlockArea,
   InfoDetail,
@@ -84,10 +83,10 @@ export const About = () => {
             );
           })}
           <InfoBlock area="E">
-            <HolderIcon type={IconType.Rss} style={{ bottom: 0, left: 0 }} />
+            <BiRss size={40} style={{ position: 'absolute', bottom: 0, left: 0 }} />
           </InfoBlock>
           <InfoBlock area="G">
-            <HolderIcon type={IconType.Rss} style={{ top: 0, right: 0, transform: 'rotate(180deg)' }} />
+            <BiRss size={40} style={{ position: 'absolute', top: 0, right: 0, transform: 'rotate(180deg)' }} />
           </InfoBlock>
         </InfoWrapper>
       </InfoSection>

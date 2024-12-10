@@ -1,7 +1,5 @@
 import styled from 'styled-components';
 
-import { Icon } from '@/components/Icon';
-
 export const AVATAR_FRONT_SIZE = 300; //    前头像大小
 export const AVATAR_BACK_SIZE = 240; //     后头像大小
 export const AVATAR_FRONT_Z_INDEX = 100; // 前头像 z 坐标
@@ -105,10 +103,6 @@ export const InfoBlock = styled.div<InfoBlockProps>`
   position: relative;
 `;
 
-export const HolderIcon = styled(Icon).attrs({ size: 40 })`
-  position: absolute;
-`;
-
 /**
  * 块标题
  */
@@ -138,13 +132,3 @@ export const InfoDetail = styled.div`
   border: 2px solid #000;
   border-radius: 12px;
 `;
-
-export const DetailContainer = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  height: 100%;
-`;
-
-export const TechIcon = styled(Icon).attrs({ size: 50 })``;

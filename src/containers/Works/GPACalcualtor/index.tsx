@@ -1,7 +1,6 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import styled from 'styled-components';
 
-import { Icon, IconType } from '@/components/Icon';
 import { TRANS_ALL_FAST } from '@/constant/styles';
 import { getItem, LocalStorageKey, setItem } from '@/utils/localStorage';
 import InputSubject from './components/InputSubject';
@@ -146,7 +145,7 @@ const GPACalcualtor = () => {
             <div className={'credit'}>{credit}</div>
             <div className={'grade'}>{grade}分</div>
             <DeleteButton onClick={() => deleteSubject(index)}>
-              <Icon type={IconType.Trash} width={30} height={30} />
+              {/* <Icon type={IconType.Trash} width={30} height={30} /> */}
             </DeleteButton>
           </SubjectDetail>
         ))}

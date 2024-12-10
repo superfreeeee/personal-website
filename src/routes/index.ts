@@ -2,7 +2,7 @@ import { About } from '@/containers/About';
 import { Blog } from '@/containers/Blog';
 import { Contact } from '@/containers/Contact';
 import { Home } from '@/containers/Home';
-import { Works } from '@/containers/Works';
+// import { Works } from '@/containers/Works';
 import { RouteConfig } from './interface';
 
 export const routes: RouteConfig[] = [
@@ -13,7 +13,7 @@ export const routes: RouteConfig[] = [
   },
   {
     path: '/about',
-    label: 'About me',
+    label: 'About',
     component: About,
   },
   {
@@ -21,14 +21,14 @@ export const routes: RouteConfig[] = [
     label: 'Blog',
     component: Blog,
   },
-  {
-    path: '/works',
-    label: 'Works',
-    component: Works,
-  },
+  // {
+  //   path: '/works',
+  //   label: 'Works',
+  //   component: Works,
+  // },
   {
     path: '/contact',
-    label: 'Contact me',
+    label: 'Contact',
     component: Contact,
   },
 ];
