@@ -16,6 +16,9 @@ export default defineConfig({
     rollupOptions: {
       output: {
         manualChunks(id: string) {
+          if (id.includes('react-icons')) {
+            return 'lib-icons';
+          }
           if (id.includes('react-router-dom') || id.includes('react-dom') || id.includes('react')) {
             return 'lib-react';
           }
