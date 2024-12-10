@@ -1,5 +1,5 @@
 import { memo } from 'react';
-import { Switch, Route, Redirect } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 
 import { RouteConfig } from '@/routes/interface';
 
@@ -12,14 +12,12 @@ interface IMainProps {
 export const Main = memo(({ routes }: IMainProps) => {
   return (
     <main className={styles.MainContainer}>
-      <Switch>
-        {routes.map(({ path, component }) => {
-          return <Route key={path} exact path={path} component={component} />;
+      <Routes>
+        {routes.map(({ path, component: Comp }) => {
+          return <Route key={path} path={path} element={<Comp />} />;
         })}
-        <Route>
-          <Redirect to={'/'} />
-        </Route>
-      </Switch>
+        <Route path="*" element={<Navigate to="/" />} />
+      </Routes>
     </main>
   );
 });
